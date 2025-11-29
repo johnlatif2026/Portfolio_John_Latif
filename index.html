@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio - John Latif</title>
+<style>
+  /* Reset & Base */
+  * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif;}
+  body {background: #0f111a; color: #f0f0f0; line-height: 1.6;}
+  a {color: #4fc3f7; text-decoration: none; transition: 0.3s;}
+  a:hover {color: #81d4fa;}
+
+  /* Container */
+  .container {width: 90%; max-width: 1000px; margin: auto; padding: 20px;}
+
+  /* Header */
+  header {text-align: center; margin-bottom: 40px;}
+  header h1 {font-size: 3rem; margin-bottom: 10px; animation: fadeInDown 1s ease;}
+  header p {font-size: 1.2rem; color: #b0b0b0; animation: fadeInUp 1s ease;}
+
+  /* Sections */
+  section {margin-bottom: 60px;}
+  h2 {margin-bottom: 20px; border-bottom: 2px solid #4fc3f7; display: inline-block; padding-bottom: 5px; animation: fadeIn 1s ease;}
+
+  /* Skills */
+  .skills {display: flex; flex-wrap: wrap; gap: 10px;}
+  .skill {background: #1c1f2a; padding: 10px 15px; border-radius: 5px; transition: 0.3s; cursor: default;}
+  .skill:hover {transform: translateY(-5px); background: #262b3a;}
+
+  /* Projects */
+  .projects {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;}
+  .project {background: #1c1f2a; padding: 15px; border-radius: 10px; overflow: hidden; position: relative; transition: transform 0.3s;}
+  .project:hover {transform: scale(1.05);}
+  .project h3 {margin-bottom: 10px;}
+  .project p {font-size: 0.95rem; margin-bottom: 10px;}
+  .project a {font-weight: bold;}
+
+  /* Contact */
+  .contact a {display: inline-block; margin-right: 15px; margin-bottom: 10px; font-size: 1.1rem; background: #262b3a; padding: 8px 15px; border-radius: 5px; transition: 0.3s;}
+  .contact a:hover {background: #4fc3f7; color: #0f111a;}
+
+  /* Animations */
+  @keyframes fadeInDown {
+    0% {opacity: 0; transform: translateY(-20px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
+  @keyframes fadeInUp {
+    0% {opacity: 0; transform: translateY(20px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
+  @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <h1>John Latif</h1>
+    <p>مبرمج شاب | تطوير مواقع وتطبيقات ويب | شغوف بالتقنية</p>
+  </header>
+
+  <!-- Skills Section -->
+  <section>
+    <h2>المهارات</h2>
+    <div class="skills">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">Node.js</div>
+      <div class="skill">Express</div>
+      <div class="skill">Firebase</div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section>
+    <h2>المشاريع</h2>
+    <div class="projects">
+      <div class="project">
+        <h3>Giza Result</h3>
+        <p>نظام لإظهار نتائج الطلاب بشكل مباشر وسهل الاستخدام.</p>
+        <a href="https://gizaresult-production.up.railway.app" target="_blank">عرض المشروع</a>
+      </div>
+      <div class="project">
+        <h3>Subscribe App</h3>
+        <p>تطبيق لإدارة الاشتراكات للمستخدمين مع خيارات دفع متعددة.</p>
+        <a href="https://subscribe-production.up.railway.app" target="_blank">عرض المشروع</a>
+      </div>
+      <div class="project">
+        <h3>Lab Results</h3>
+        <p>منصة لإدارة وعرض نتائج التحاليل الطبية بطريقة آمنة وسريعة.</p>
+        <a href="https://lab-results-production.up.railway.app" target="_blank">عرض المشروع</a>
+      </div>
+      <div class="project">
+        <h3>Clan FBI X Esport</h3>
+        <p>موقع مجتمع لألعاب الرياضة الإلكترونية، يشمل تسجيل اللاعبين وتنظيم البطولات.</p>
+        <a href="https://clan-fbi-x-esport-production.up.railway.app" target="_blank">عرض المشروع</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section>
+    <h2>تواصل معي</h2>
+    <div class="contact">
+      <a href="mailto:johnlatif37@gmail.com">البريد الإلكتروني</a>
+      <a href="tel:+201274445091">الهاتف</a>
+      <a href="https://wa.me/201274445091" target="_blank">Whatsapp</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Small interactive effect: fade-in projects on scroll
+  const projects = document.querySelectorAll('.project');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY + window.innerHeight;
+    projects.forEach(project => {
+      if (scrollY > project.offsetTop + 100) {
+        project.style.opacity = 1;
+        project.style.transform = 'translateY(0)';
+      } else {
+        project.style.opacity = 0;
+        project.style.transform = 'translateY(20px)';
+      }
+    });
+  });
+
+  // Initial opacity
+  projects.forEach(project => {
+    project.style.opacity = 0;
+    project.style.transform = 'translateY(20px)';
+    project.style.transition = '0.6s ease-out';
+  });
+</script>
+
+</body>
+</html>
