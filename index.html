@@ -1,145 +1,553 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio - John Latif</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>جون لطيف | مطور ويب شاب</title>
+<!-- Font Awesome 6 (Free) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
-  /* Reset & Base */
-  * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif;}
-  body {background: #0f111a; color: #f0f0f0; line-height: 1.6;}
-  a {color: #4fc3f7; text-decoration: none; transition: 0.3s;}
-  a:hover {color: #81d4fa;}
-
-  /* Container */
-  .container {width: 90%; max-width: 1000px; margin: auto; padding: 20px;}
-
-  /* Header */
-  header {text-align: center; margin-bottom: 40px;}
-  header h1 {font-size: 3rem; margin-bottom: 10px; animation: fadeInDown 1s ease;}
-  header p {font-size: 1.2rem; color: #b0b0b0; animation: fadeInUp 1s ease;}
-
-  /* Sections */
-  section {margin-bottom: 60px;}
-  h2 {margin-bottom: 20px; border-bottom: 2px solid #4fc3f7; display: inline-block; padding-bottom: 5px; animation: fadeIn 1s ease;}
-
-  /* Skills */
-  .skills {display: flex; flex-wrap: wrap; gap: 10px;}
-  .skill {background: #1c1f2a; padding: 10px 15px; border-radius: 5px; transition: 0.3s; cursor: default;}
-  .skill:hover {transform: translateY(-5px); background: #262b3a;}
-
-  /* Projects */
-  .projects {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;}
-  .project {background: #1c1f2a; padding: 15px; border-radius: 10px; overflow: hidden; position: relative; transition: transform 0.3s;}
-  .project:hover {transform: scale(1.05);}
-  .project h3 {margin-bottom: 10px;}
-  .project p {font-size: 0.95rem; margin-bottom: 10px;}
-  .project a {font-weight: bold;}
-
-  /* Contact */
-  .contact a {display: inline-block; margin-right: 15px; margin-bottom: 10px; font-size: 1.1rem; background: #262b3a; padding: 8px 15px; border-radius: 5px; transition: 0.3s;}
-  .contact a:hover {background: #4fc3f7; color: #0f111a;}
-
-  /* Animations */
-  @keyframes fadeInDown {
-    0% {opacity: 0; transform: translateY(-20px);}
-    100% {opacity: 1; transform: translateY(0);}
-  }
-  @keyframes fadeInUp {
-    0% {opacity: 0; transform: translateY(20px);}
-    100% {opacity: 1; transform: translateY(0);}
-  }
-  @keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+  /* ---------- RESET & GLOBAL ---------- */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
+  body {
+    background: linear-gradient(145deg, #0a0c15 0%, #0f111f 100%);
+    font-family: 'Segoe UI', 'Tajawal', system-ui, -apple-system, 'Roboto', sans-serif;
+    color: #eef2ff;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1a1e2c;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #4f9eff;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2c7be5;
+  }
+
+  /* Container fluid with max-width & responsive padding */
+  .container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Typography */
+  h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 8vw, 3.8rem);
+    background: linear-gradient(135deg, #FFFFFF 0%, #9acdff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    margin-bottom: 1.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border-right: 4px solid #4f9eff;
+    padding-right: 1rem;
+  }
+
+  h2 i {
+    color: #4f9eff;
+    font-size: 1.6rem;
+  }
+
+  /* header modern */
+  .header-modern {
+    text-align: center;
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid rgba(79, 158, 255, 0.2);
+    margin-bottom: 3rem;
+    backdrop-filter: blur(4px);
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(79, 158, 255, 0.15);
+    backdrop-filter: blur(8px);
+    padding: 0.4rem 1.2rem;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #b8d8ff;
+    margin-top: 1rem;
+    border: 1px solid rgba(79, 158, 255, 0.3);
+  }
+
+  /* Skills grid - modern cards */
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin: 1rem 0 0.5rem;
+  }
+  .skill {
+    background: rgba(25, 30, 45, 0.7);
+    backdrop-filter: blur(4px);
+    padding: 0.7rem 1.3rem;
+    border-radius: 60px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+    border: 1px solid rgba(79, 158, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: default;
+    letter-spacing: 0.3px;
+  }
+  .skill i {
+    margin-left: 8px;
+    font-size: 1rem;
+    color: #4f9eff;
+  }
+  .skill:hover {
+    transform: translateY(-4px);
+    background: rgba(79, 158, 255, 0.2);
+    border-color: #4f9eff;
+    box-shadow: 0 12px 18px -8px rgba(0, 100, 255, 0.2);
+  }
+
+  /* Projects Grid - responsive & glassmorphism */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .project-card {
+    background: rgba(18, 22, 35, 0.75);
+    backdrop-filter: blur(12px);
+    border-radius: 28px;
+    padding: 1.5rem;
+    transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    border: 1px solid rgba(79, 158, 255, 0.2);
+    box-shadow: 0 20px 30px -12px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    border-color: #4f9eff;
+    background: rgba(25, 32, 55, 0.85);
+    box-shadow: 0 28px 38px -12px rgba(0, 110, 255, 0.3);
+  }
+
+  .project-icon {
+    font-size: 2.4rem;
+    color: #4f9eff;
+    margin-bottom: 1rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .project-card p {
+    color: #cbd5ff;
+    font-size: 0.95rem;
+    margin-bottom: 1.4rem;
+    line-height: 1.5;
+    flex-grow: 1;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #9acdff;
+    background: rgba(79, 158, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 40px;
+    width: fit-content;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+    border: 1px solid rgba(79, 158, 255, 0.3);
+  }
+
+  .project-link i {
+    transition: transform 0.2s;
+  }
+
+  .project-link:hover {
+    background: #4f9eff;
+    color: #0a0c15;
+    border-color: #4f9eff;
+  }
+  .project-link:hover i {
+    transform: translateX(-4px);
+  }
+
+  /* Contact Section - modern buttons */
+  .contact-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: 0.5rem;
+  }
+  .contact-btn {
+    background: rgba(20, 25, 42, 0.8);
+    backdrop-filter: blur(8px);
+    padding: 0.9rem 1.8rem;
+    border-radius: 60px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: 0.25s;
+    border: 1px solid rgba(79, 158, 255, 0.3);
+    color: #eef2ff;
+  }
+  .contact-btn i {
+    font-size: 1.3rem;
+    color: #4f9eff;
+  }
+  .contact-btn:hover {
+    background: #4f9eff;
+    color: #0f111f;
+    transform: translateY(-3px);
+    border-color: #4f9eff;
+  }
+  .contact-btn:hover i {
+    color: #0f111f;
+  }
+
+  /* Footer */
+  .footer-note {
+    margin-top: 5rem;
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(79, 158, 255, 0.15);
+    font-size: 0.85rem;
+    color: #8d9bcf;
+  }
+
+  /* Reveal animation on scroll (intersection observer style) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.7s cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Responsive spacing */
+  @media (max-width: 640px) {
+    .container {
+      padding: 0 1.2rem;
+    }
+    .contact-btn {
+      padding: 0.7rem 1.2rem;
+      font-size: 0.9rem;
+    }
+    .project-card {
+      padding: 1.2rem;
+    }
+  }
+
+  /* 3D subtle background effect */
+  .glow-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(circle at 20% 40%, rgba(30, 80, 150, 0.15) 0%, rgba(0,0,0,0) 60%);
+  }
 </style>
 </head>
 <body>
+
+<div class="glow-bg"></div>
+
 <div class="container">
+  <!-- Header with modern typography -->
+  <div class="header-modern reveal">
+    <h1>جون لطيف <span style="font-weight: 500;">✨</span></h1>
+    <p style="font-size: clamp(1rem, 4vw, 1.3rem); color: #b8ceff; max-width: 650px; margin: 0.6rem auto 0;">Full-stack developer | مبتكر تجارب ويب سريعة وحديثة</p>
+    <div class="badge">
+      <i class="fas fa-code"></i>  شغوف ببناء حلول رقمية ذكية
+    </div>
+  </div>
 
-  <!-- Header -->
-  <header>
-    <h1>John Latif</h1>
-    <p>مبرمج شاب | تطوير مواقع وتطبيقات ويب | شغوف بالتقنية</p>
-  </header>
-
-  <!-- Skills Section -->
-  <section>
-    <h2>المهارات</h2>
+  <!-- Skills section with icons & modern tags -->
+  <section class="reveal">
+    <h2><i class="fas fa-cogs"></i> المهارات التقنية</h2>
     <div class="skills">
-      <div class="skill">HTML</div>
-      <div class="skill">CSS</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">Node.js</div>
-      <div class="skill">Express</div>
-      <div class="skill">Firebase</div>
+      <div class="skill"><i class="fab fa-html5"></i> HTML5</div>
+      <div class="skill"><i class="fab fa-css3-alt"></i> CSS3</div>
+      <div class="skill"><i class="fab fa-js"></i> JavaScript (ES6+)</div>
+      <div class="skill"><i class="fab fa-node-js"></i> Node.js</div>
+      <div class="skill"><i class="fas fa-server"></i> Express.js</div>
+      <div class="skill"><i class="fas fa-database"></i> Firebase</div>
+      <div class="skill"><i class="fas fa-mobile-alt"></i> RWD</div>
+      <div class="skill"><i class="fas fa-cloud-upload-alt"></i> Railway</div>
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section>
-    <h2>المشاريع</h2>
-    <div class="projects">
-      <div class="project">
+  <!-- Projects section - redesigned glass cards -->
+  <section class="reveal">
+    <h2><i class="fas fa-laptop-code"></i> أبرز المشاريع</h2>
+    <div class="projects-grid" id="projectsContainer">
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-graduation-cap"></i></div>
         <h3>Giza Result</h3>
-        <p>نظام لإظهار نتائج الطلاب بشكل مباشر وسهل الاستخدام.</p>
-        <a href="https://gizaresult-production.up.railway.app" target="_blank">عرض المشروع</a>
+        <p>بوابة ذكية لعرض نتائج الطلاب بشكل فوري، دعم البحث المتقدم ولوحة تحكم سهلة للطلاب والمعلمين.</p>
+        <a href="https://gizaresult-production.up.railway.app" target="_blank" class="project-link">
+          <span>عرض المشروع</span> <i class="fas fa-arrow-left"></i>
+        </a>
       </div>
-      <div class="project">
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-credit-card"></i></div>
         <h3>Subscribe App</h3>
-        <p>تطبيق لإدارة الاشتراكات للمستخدمين مع خيارات دفع متعددة.</p>
-        <a href="https://subscribe-production.up.railway.app" target="_blank">عرض المشروع</a>
+        <p>منصة متكاملة لإدارة الاشتراكات الشهرية والسنوية، مع تكامل بوابات دفع وتنبيهات تلقائية.</p>
+        <a href="https://subscribe-production.up.railway.app" target="_blank" class="project-link">
+          <span>عرض المشروع</span> <i class="fas fa-arrow-left"></i>
+        </a>
       </div>
-      <div class="project">
+      <!-- Project 3 -->
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-flask"></i></div>
         <h3>Lab Results</h3>
-        <p>منصة لإدارة وعرض نتائج التحاليل الطبية بطريقة آمنة وسريعة.</p>
-        <a href="https://lab-results-production.up.railway.app" target="_blank">عرض المشروع</a>
+        <p>منصة طبية آمنة لعرض نتائج التحاليل المخبرية، مع إشعارات لحظية وحماية البيانات.</p>
+        <a href="https://lab-results-production.up.railway.app" target="_blank" class="project-link">
+          <span>عرض المشروع</span> <i class="fas fa-arrow-left"></i>
+        </a>
       </div>
-      <div class="project">
+      <!-- Project 4 -->
+      <div class="project-card">
+        <div class="project-icon"><i class="fas fa-gamepad"></i></div>
         <h3>Clan FBI X Esport</h3>
-        <p>موقع مجتمع لألعاب الرياضة الإلكترونية، يشمل تسجيل اللاعبين وتنظيم البطولات.</p>
-        <a href="https://clan-fbi-x-esport-production.up.railway.app" target="_blank">عرض المشروع</a>
+        <p>منصة مجتمع للاعبين المحترفين، نظام بطولات، تصنيف اللاعبين ومتابعة الإحصائيات.</p>
+        <a href="https://clan-fbi-x-esport-production.up.railway.app" target="_blank" class="project-link">
+          <span>عرض المشروع</span> <i class="fas fa-arrow-left"></i>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section>
-    <h2>تواصل معي</h2>
-    <div class="contact">
-      <a href="mailto:johnlatif37@gmail.com">البريد الإلكتروني</a>
-      <a href="tel:+201274445091">الهاتف</a>
-      <a href="https://wa.me/201274445091" target="_blank">Whatsapp</a>
+  <!-- Contact Section - redesigned with modern buttons + extra info -->
+  <section class="reveal">
+    <h2><i class="fas fa-paper-plane"></i> تواصل معي</h2>
+    <div class="contact-wrapper">
+      <a href="mailto:johnlatif37@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> البريد الإلكتروني</a>
+      <a href="tel:+201274445091" class="contact-btn"><i class="fas fa-phone-alt"></i> اتصال</a>
+      <a href="https://wa.me/201274445091" target="_blank" class="contact-btn"><i class="fab fa-whatsapp"></i> واتساب</a>
+      <a href="#" class="contact-btn" id="copyEmailBtn" style="cursor: pointer;"><i class="far fa-copy"></i> نسخ البريد</a>
     </div>
+    <div id="toastMsg" style="position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #1f2a48; color: white; padding: 0.6rem 1.5rem; border-radius: 60px; font-size: 0.85rem; backdrop-filter: blur(12px); z-index: 999; opacity: 0; transition: opacity 0.25s; pointer-events: none;"></div>
   </section>
 
+  <div class="footer-note">
+    <i class="fas fa-code-branch"></i>  جون لطيف — بناء تطبيقات تلهم المستقبل 
+  </div>
 </div>
 
 <script>
-  // Small interactive effect: fade-in projects on scroll
-  const projects = document.querySelectorAll('.project');
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY + window.innerHeight;
-    projects.forEach(project => {
-      if (scrollY > project.offsetTop + 100) {
-        project.style.opacity = 1;
-        project.style.transform = 'translateY(0)';
-      } else {
-        project.style.opacity = 0;
-        project.style.transform = 'translateY(20px)';
+  (function() {
+    // ========== REVEAL ON SCROLL (Intersection Observer) ==========
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          // optional: keep observing if needed but we can unobserve after reveal
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+    
+    revealElements.forEach(el => observer.observe(el));
+    
+    // manually trigger for any already visible due to fast load
+    if (revealElements.length) {
+      setTimeout(() => {
+        revealElements.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 80) {
+            el.classList.add('active');
+            observer.unobserve(el);
+          }
+        });
+      }, 100);
+    }
+    
+    // ========== ADD INTERACTIVE FEATURES: COPY EMAIL ==========
+    const copyBtn = document.getElementById('copyEmailBtn');
+    const toast = document.getElementById('toastMsg');
+    
+    function showMessage(msg, isError = false) {
+      toast.style.backgroundColor = isError ? '#b91c2c' : '#1f2a48';
+      toast.style.opacity = '1';
+      toast.innerText = msg;
+      setTimeout(() => {
+        toast.style.opacity = '0';
+      }, 2200);
+    }
+    
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const email = "johnlatif37@gmail.com";
+        try {
+          await navigator.clipboard.writeText(email);
+          showMessage("✅ تم نسخ البريد الإلكتروني: " + email);
+        } catch (err) {
+          // fallback
+          const textarea = document.createElement('textarea');
+          textarea.value = email;
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+          showMessage("📋 تم نسخ البريد بنجاح");
+        }
+      });
+    }
+    
+    // ========== HOVER DYNAMIC GLOW FOR CARDS (optional smooth) ==========
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', (e) => {
+        card.style.transition = 'all 0.25s ease';
+      });
+    });
+    
+    // ========== ADD RESPONSIVE TOUCH FRIENDLY ==========
+    // make sure all external links open securely
+    const allLinks = document.querySelectorAll('a[target="_blank"]');
+    allLinks.forEach(link => {
+      link.setAttribute('rel', 'noopener noreferrer');
+    });
+    
+    // small trick: adjust skills icons (already present, but ensure they're clean)
+    // for any skill with no icon, but we already defined.
+    const skillDivs = document.querySelectorAll('.skill');
+    const skillIconMap = {
+      'HTML5': 'fab fa-html5',
+      'CSS3': 'fab fa-css3-alt',
+      'JavaScript (ES6+)': 'fab fa-js',
+      'Node.js': 'fab fa-node-js',
+      'Express.js': 'fas fa-server',
+      'Firebase': 'fas fa-database',
+      'RWD': 'fas fa-mobile-alt',
+      'Railway': 'fas fa-cloud-upload-alt'
+    };
+    skillDivs.forEach(skill => {
+      let text = skill.innerText.trim();
+      // remove any extra icon text if exists, but we keep standard text
+      for (let [key, iconClass] of Object.entries(skillIconMap)) {
+        if (text.includes(key)) {
+          // Avoid duplicate icons
+          if (!skill.querySelector('i')) {
+            const iconElem = document.createElement('i');
+            iconElem.className = iconClass;
+            iconElem.style.marginLeft = '8px';
+            skill.prepend(iconElem);
+          }
+          break;
+        }
+      }
+      // In case no mapping fallback: but skills have icon classes added in original html? Not needed 
+      // ensure that every skill has a cute icon as backup:
+      if (!skill.querySelector('i')) {
+        const defaultIcon = document.createElement('i');
+        defaultIcon.className = 'fas fa-code';
+        defaultIcon.style.marginLeft = '8px';
+        skill.prepend(defaultIcon);
       }
     });
-  });
-
-  // Initial opacity
-  projects.forEach(project => {
-    project.style.opacity = 0;
-    project.style.transform = 'translateY(20px)';
-    project.style.transition = '0.6s ease-out';
-  });
+    
+    // improve performance: preload any images? not needed
+    
+    // add 'active' to all sections that appear early (header)
+    document.querySelectorAll('.reveal').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight - 50) {
+        el.classList.add('active');
+      }
+    });
+    
+    // small accessibility addition: add aria labels
+    const contactBtns = document.querySelectorAll('.contact-btn');
+    contactBtns.forEach(btn => {
+      if (btn.innerText.includes('واتساب')) btn.setAttribute('aria-label', 'تواصل عبر واتساب');
+      else if (btn.innerText.includes('البريد')) btn.setAttribute('aria-label', 'إرسال بريد إلكتروني');
+      else if (btn.innerText.includes('اتصال')) btn.setAttribute('aria-label', 'رقم الهاتف');
+      else if (btn.innerText.includes('نسخ')) btn.setAttribute('aria-label', 'نسخ البريد الإلكتروني');
+    });
+    
+    // 3d parallax effect on header (light weight)
+    const header = document.querySelector('.header-modern');
+    if (header) {
+      document.addEventListener('mousemove', (e) => {
+        const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        const mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+        const moveX = mouseX * 6;
+        const moveY = mouseY * 4;
+        header.style.transform = `translate(${moveX * 0.3}px, ${moveY * 0.2}px)`;
+      });
+      // reset on mouse leave body? small effect
+      document.body.addEventListener('mouseleave', () => {
+        header.style.transform = 'translate(0px, 0px)';
+      });
+    }
+    
+    // make footer dynamic year for freshness
+    const footer = document.querySelector('.footer-note');
+    if (footer && !footer.innerHTML.includes('2025')) {
+      const yearSpan = document.createElement('span');
+      yearSpan.innerHTML = ` &copy; ${new Date().getFullYear()} `;
+      footer.insertBefore(yearSpan, footer.firstChild);
+    }
+    
+    // Preload font awesome? already done from CDN. no further issues
+    // Additional responsive touch: cards appear with scale effect nicely
+    // ensure smooth grid for mobile: all good
+    
+    // final: if any project link has relative path? they are absolute safe.
+    console.log('تم تحديث التصميم بشكل كامل — responsive + glassmorphic');
+    
+    // Fix for iOS active states
+    if (('ontouchstart' in window) || (navigator.maxTouchPoints > 0)) {
+      document.body.style.cursor = 'pointer';
+    }
+  })();
 </script>
-
 </body>
 </html>
